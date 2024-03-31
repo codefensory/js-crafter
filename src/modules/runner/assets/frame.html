@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <script>
+      const methods = ['log', 'debug', 'info', 'warn', 'error', 'table', 'clear', 'time', 'timeEnd', 'count', 'assert']
+      methods.forEach(method => {
+        console[method] = (...args) => {
+          parent.window.postMessage({ type: 'log', method, args: args }, '*')
+        }
+      })
+
+      window.onerror = function (error, source, lineno, colno, error) {
+        console.error(error)
+      }
+
+      window.addEventListener('message', event => {
+        const data = event.data
+
+        if (data.type === 'reload') {
+          window.location.reload()
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <script>
+      const codeUrl = parent.window.codeUrl
+      if (codeUrl) {
+        const script = document.createElement('script')
+
+        script.src = codeUrl
+
+        script.onload = () => {
+          parent.window.postMessage({ type: 'ready', args: [!0] }, '*')
+        }
+
+        document.body.appendChild(script)
+      }
+    </script>
+  </body>
+</html>
