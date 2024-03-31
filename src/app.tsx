@@ -60,11 +60,11 @@ export function App() {
   }, [])
 
   return (
-    <div>
+    <>
       <div className="editor-container" style={{ height: ran.value ? '650px' : '500px' }}>
         <div className="editor-title">index.ts</div>
         <div className="editor-code">
-          <MainEditor onChange={() => (ran.value = false)} />
+          <MainEditor onChange={() => (ran.value = ran.value === null ? null : false)} />
         </div>
         <div
           className="transition-[height] duration-200 border-t-[1px] border-[#ffffff20] flex flex-col-reverse overflow-auto"
@@ -78,6 +78,6 @@ export function App() {
         </div>
       </div>
       <RunnerCore />
-    </div>
+    </>
   )
 }

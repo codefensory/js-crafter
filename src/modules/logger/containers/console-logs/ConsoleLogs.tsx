@@ -1,15 +1,20 @@
 import { Console } from 'console-feed'
 import { logs } from '../../signals/logs'
+import { Methods } from 'console-feed/lib/definitions/Methods'
 
-window.addEventListener('message', e => {
-  const data = e.data
+type SendLogs = (data: { method: Methods; args: any[] }) => void
 
-  if (data.type === 'log') {
-    ;(console as any)[data.method]?.(...data.args)
+type WindowPlusSendLog = typeof window & { sendLog: SendLogs }
 
-    logs.value = [...logs.value, { id: Math.random(), method: data.method, data: [...data.args] }]
+const customWindow = window as WindowPlusSendLog
+
+customWindow.sendLog = data => {
+  if (import.meta.env.DEV) {
+    console.log('[debug] receiving', ...data.args)
   }
-})
+
+  logs.value = [...logs.value, { id: Math.random(), method: data.method, data: [...data.args] }]
+}
 
 export const ConsoleLogs = () => {
   return (

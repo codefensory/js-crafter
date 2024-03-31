@@ -12,7 +12,8 @@ export const useBuidler = () => {
       },
       bundle: true,
       write: false,
-      format: 'esm',
+      format: 'cjs',
+      treeShaking: false,
       plugins: [],
     })
   }
