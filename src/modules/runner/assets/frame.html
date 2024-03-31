@@ -10,7 +10,7 @@
       })
 
       window.onerror = function (error, source, lineno, colno, error) {
-        console.error(error)
+        parent.window.sendLog?.({ method: 'error', args: [error] })
       }
 
       window.addEventListener('message', event => {

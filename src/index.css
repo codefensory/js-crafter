@@ -1,3 +1,87 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.editor-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 500px;
+  transition: height 220ms;
+  background: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px hsla(0, 0%, 100%, 0.3), 0 0 0 1.5px rgba(0, 0, 0, 0.8), 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.editor-title {
+  text-align: center;
+  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji;
+  font-size: 18px;
+  padding: 8px 0;
+  color: #ffffff99;
+}
+
+.editor-code {
+  height: 0;
+  flex: 1;
+}
+
+.console-container {
+  height: 50px;
+  transition: height 220ms;
+  border-top: 1px solid #ffffff20;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: auto;
+  margin: 10px 13px;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(354deg, #ff75b5, #ffb86c);
+}
+
+.progress {
+  display: flex;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.1);
+  transition: opacity 400ms;
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  display: flex;
+  height: 6px;
+  width: 400px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.progress-value {
+  animation: load 1s normal forwards;
+  box-shadow: 0 1px 4px -1px #fff;
+  border-radius: 100px;
+  background: #fff;
+  height: 6px;
+  width: 0;
+}
+
+@keyframes load {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 95%;
+  }
+}
