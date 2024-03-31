@@ -1,6 +1,6 @@
 import * as esbuild from 'esbuild-wasm'
 
-await esbuild.initialize({
+esbuild.initialize({
   wasmURL: '../../node_modules/esbuild-wasm/esbuild.wasm',
 })
 
