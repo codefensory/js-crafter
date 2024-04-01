@@ -1,6 +1,7 @@
-import './app.css'
-import { useEffect } from 'preact/hooks'
 import { signal } from '@preact/signals'
+import { useEffect } from 'preact/hooks'
+import { Tooltip } from 'react-tooltip'
+
 import { useBuidler } from './packages/builder/controllers/useBuilder'
 
 import { RunnerCore } from './modules/runner/containers/runner-core/RunnerCore'
@@ -62,7 +63,19 @@ export function App() {
   return (
     <>
       <div className="editor-container" style={{ height: ran.value ? '650px' : '500px' }}>
-        <div className="editor-title">index.ts</div>
+        <div className="relative p-2">
+          <h4 className="editor-title">index.ts</h4>
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-16 py-0.5 bg-[#00000040] text-gray-300 font-bold rounded-lg border border-[#61616140]"
+            onClick={handleCraft}
+            data-tooltip-id="run-tooltip"
+            data-tooltip-content="Run code (shift + enter)"
+            data-tooltip-place="bottom-end"
+            data-tooltip-offset={3}
+          >
+            Run
+          </button>
+        </div>
         <div className="editor-code">
           <MainEditor onChange={() => (ran.value = ran.value === null ? null : false)} />
         </div>
@@ -78,6 +91,7 @@ export function App() {
         </div>
       </div>
       <RunnerCore />
+      <Tooltip id="run-tooltip" className="tooltip" noArrow delayShow={300} />
     </>
   )
 }

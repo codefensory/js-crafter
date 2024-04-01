@@ -25,7 +25,6 @@
   font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
     Noto Color Emoji;
   font-size: 18px;
-  padding: 8px 0;
   color: #ffffff99;
 }
 
@@ -84,4 +83,17 @@ body {
   100% {
     width: 95%;
   }
+}
+
+:root {
+  --rt-opacity: 1 !important;
+}
+
+.tooltip {
+  background-color: #2e211d !important;
+  border-radius: 8px !important;
+
+  box-shadow: 0 0 0 1px #6161614d;
+
+  @apply !text-gray-300 !text-xs !py-1 !px-2;
 }
