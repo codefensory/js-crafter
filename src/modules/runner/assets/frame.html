@@ -24,7 +24,7 @@
   </head>
   <body>
     <script>
-      globalThis.exports = undefined
+      globalThis.exports = this
 
       const codeUrl = parent.window.codeUrl
 
@@ -32,8 +32,6 @@
         const script = document.createElement('script')
 
         script.src = codeUrl
-
-        script.type = 'module'
 
         script.onload = () => {
           parent.window.postMessage({ type: 'ready', args: [!0] }, '*')
