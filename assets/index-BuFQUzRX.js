@@ -708,7 +708,7 @@ ${ot}:${Ke}:${vt}: ERROR: ${Et}${mt.text}`}).join("");let st=new Error(Pe);for(c
   </head>
   <body>
     <script>
-      globalThis.exports = undefined
+      globalThis.exports = this
 
       const codeUrl = parent.window.codeUrl
 
@@ -716,8 +716,6 @@ ${ot}:${Ke}:${vt}: ERROR: ${Et}${mt.text}`}).join("");let st=new Error(Pe);for(c
         const script = document.createElement('script')
 
         script.src = codeUrl
-
-        script.type = 'module'
 
         script.onload = () => {
           parent.window.postMessage({ type: 'ready', args: [!0] }, '*')
